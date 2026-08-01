@@ -24,7 +24,6 @@
   },
   "name":"Domino",
   "resources":[
-    {"id":{"name":"obj_controle_domino","path":"objects/obj_controle_domino/obj_controle_domino.yy",},},
     {"id":{"name":"obj_domino","path":"objects/obj_domino/obj_domino.yy",},},
     {"id":{"name":"obj_dominoCreater","path":"objects/obj_dominoCreater/obj_dominoCreater.yy",},},
     {"id":{"name":"obj_finger","path":"objects/obj_finger/obj_finger.yy",},},
