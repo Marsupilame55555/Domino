@@ -24,7 +24,6 @@
   },
   "name":"Domino",
   "resources":[
-    {"id":{"name":"obj_controle_domino","path":"objects/obj_controle_domino/obj_controle_domino.yy",},},
     {"id":{"name":"obj_domino","path":"objects/obj_domino/obj_domino.yy",},},
     {"id":{"name":"obj_dominoCreater","path":"objects/obj_dominoCreater/obj_dominoCreater.yy",},},
     {"id":{"name":"obj_finger","path":"objects/obj_finger/obj_finger.yy",},},
@@ -34,7 +33,9 @@
     {"id":{"name":"Globals","path":"scripts/Globals/Globals.yy",},},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},
     {"id":{"name":"spr_domino","path":"sprites/spr_domino/spr_domino.yy",},},
-    {"id":{"name":"spr_dominoFall","path":"sprites/spr_dominoFall/spr_dominoFall.yy",},},
+    {"id":{"name":"spr_dominoFall_1","path":"sprites/spr_dominoFall_1/spr_dominoFall_1.yy",},},
+    {"id":{"name":"spr_dominoFall_2","path":"sprites/spr_dominoFall_2/spr_dominoFall_2.yy",},},
+    {"id":{"name":"spr_dominoFall_3","path":"sprites/spr_dominoFall_3/spr_dominoFall_3.yy",},},
     {"id":{"name":"spr_finger","path":"sprites/spr_finger/spr_finger.yy",},},
     {"id":{"name":"spr_green","path":"sprites/spr_green/spr_green.yy",},},
     {"id":{"name":"spr_grid","path":"sprites/spr_grid/spr_grid.yy",},},

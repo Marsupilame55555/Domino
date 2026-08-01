@@ -2,18 +2,14 @@ canMove=false
 canEdit=false
 
 collisionList=[obj_domino, obj_finger, obj_pointB]
+sprites=choose(spr_dominoFall_1, spr_dominoFall_2, spr_dominoFall_3)
 
 stateNormal=function(){
     sprite_index=spr_domino
     
-    if (keyboard_check_pressed(mb_left))
-    {
-        canMove = !canMove;
-    }
-    
     if (canMove)
     {
-        var nx = ((mouse_x div CELL_SIZE) * CELL_SIZE) +3;
+        var nx = ((mouse_x div CELL_SIZE) * CELL_SIZE) +4;
         var ny = ((mouse_y div CELL_SIZE) * CELL_SIZE) 
         if (!place_meeting(nx, ny, collisionList))
         {
@@ -23,18 +19,6 @@ stateNormal=function(){
     }
     
     if canEdit{
-        if (keyboard_check_pressed(ord("Q"))){
-            image_angle-=90
-        }
-        if (keyboard_check_pressed(ord("R"))){
-            image_angle+=90
-        }
-        if (keyboard_check_pressed(ord("W"))){
-            image_angle-=45
-        }
-        if (keyboard_check_pressed(ord("E"))){
-            image_angle+=45
-        }
         if (mouse_wheel_down())
         {
             image_angle-=45
@@ -119,7 +103,7 @@ stateNormal=function(){
 }
 
 stateFalling=function(){
-    sprite_index=spr_dominoFall
+    sprite_index=sprites
     if image_index>image_number-1{
         state=stateFalled
     }
