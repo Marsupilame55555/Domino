@@ -8,7 +8,7 @@
     "children":[],
     "name":"Default",
   },
-  "defaultScriptType":0,
+  "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -24,6 +24,7 @@
   },
   "name":"Domino",
   "resources":[
+    {"id":{"name":"obj_controle_domino","path":"objects/obj_controle_domino/obj_controle_domino.yy",},},
     {"id":{"name":"obj_domino","path":"objects/obj_domino/obj_domino.yy",},},
     {"id":{"name":"obj_dominoCreater","path":"objects/obj_dominoCreater/obj_dominoCreater.yy",},},
     {"id":{"name":"obj_finger","path":"objects/obj_finger/obj_finger.yy",},},

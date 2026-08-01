@@ -5,7 +5,13 @@ collisionList=[obj_domino, obj_finger, obj_pointB]
 
 stateNormal=function(){
     sprite_index=spr_domino
-    if (mouse_check_button(mb_left) && canMove)
+    
+    if (keyboard_check_pressed(mb_left))
+    {
+        canMove = !canMove;
+    }
+    
+    if (canMove)
     {
         var nx = ((mouse_x div CELL_SIZE) * CELL_SIZE) +3;
         var ny = ((mouse_y div CELL_SIZE) * CELL_SIZE) 
@@ -17,16 +23,24 @@ stateNormal=function(){
     }
     
     if canEdit{
-        if keyboard_check_pressed(ord("Q")){
+        if (keyboard_check_pressed(ord("Q"))){
             image_angle-=90
         }
-        if keyboard_check_pressed(ord("R")){
+        if (keyboard_check_pressed(ord("R"))){
             image_angle+=90
         }
-        if keyboard_check_pressed(ord("W")){
+        if (keyboard_check_pressed(ord("W"))){
             image_angle-=45
         }
-        if keyboard_check_pressed(ord("E")){
+        if (keyboard_check_pressed(ord("E"))){
+            image_angle+=45
+        }
+        if (mouse_wheel_down())
+        {
+            image_angle-=45
+        }
+        if (mouse_wheel_up())
+        {
             image_angle+=45
         }
     }
