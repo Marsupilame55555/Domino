@@ -31,6 +31,7 @@
     {"id":{"name":"Fase1","path":"rooms/Fase1/Fase1.yy",},},
     {"id":{"name":"Tutorial","path":"rooms/Tutorial/Tutorial.yy",},},
     {"id":{"name":"Globals","path":"scripts/Globals/Globals.yy",},},
+    {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},
     {"id":{"name":"spr_domino","path":"sprites/spr_domino/spr_domino.yy",},},
     {"id":{"name":"spr_dominoFall","path":"sprites/spr_dominoFall/spr_dominoFall.yy",},},
     {"id":{"name":"spr_finger","path":"sprites/spr_finger/spr_finger.yy",},},

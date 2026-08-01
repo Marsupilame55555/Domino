@@ -1,1 +1,1 @@
-#macro CELL_SIZE 7
+#macro CELL_SIZE 8
