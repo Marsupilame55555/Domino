@@ -15,7 +15,8 @@ if go=true{
 
 
 var domino=instance_place(x,y,obj_domino)
-if ((domino and domino.state=domino.stateNormal)){
+
+if ((domino and domino.state=domino.stateParado) && go){
     with (domino) {
     	state=stateFalling;
     }
