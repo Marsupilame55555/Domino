@@ -1,5 +1,4 @@
 canMove=false
-
 collisionList=[obj_domino, obj_finger, obj_pointB]
 sprites=choose(spr_dominoFall_1, spr_dominoFall_2, spr_dominoFall_3, spr_dominoFall_4)
 
@@ -104,7 +103,6 @@ stateMoving=function(){
     }else if image_angle=-405{
         image_angle=315
     }
-    
 }
 
 stateFalling=function(){
