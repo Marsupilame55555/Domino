@@ -28,42 +28,45 @@ stateParado=function(){
     var domino=instance_place(x,y,obj_domino)
     if domino and (domino.state=domino.stateFalled or domino.state=domino.stateFalling){
         var dominoAngle=domino.image_angle
+        
         angle=irandom_range(-5, 5)
         audio_sound_pitch_range(snd_domino, 0.15)
         
         if image_angle=0{
-            if dominoAngle=180 or dominoAngle=135 or dominoAngle=225{
+            if dominoAngle=180 or dominoAngle=135 or dominoAngle=225 or dominoAngle=-180 or dominoAngle=-225 or dominoAngle=-135{
                 image_angle=180
             }
         }else if image_angle=45 or image_angle=-315{
-            if dominoAngle=180 or dominoAngle=270 or dominoAngle=225{
+            if dominoAngle=180 or dominoAngle=270 or dominoAngle=225 or dominoAngle=-180 or dominoAngle=-90 or dominoAngle=-135{
                 image_angle=225
             }
         }else if image_angle=90  or image_angle=-270{
-            if dominoAngle=270 or dominoAngle=315 or dominoAngle=225{
+            if dominoAngle=270 or dominoAngle=315 or dominoAngle=225 or dominoAngle=-90 or dominoAngle=-45 or dominoAngle=-135{
                 image_angle=270
             }
         }else if image_angle=135 or image_angle=-225{
-            if dominoAngle=270 or dominoAngle=315 or dominoAngle=0{
+            if dominoAngle=270 or dominoAngle=315 or dominoAngle=0 or dominoAngle=-90 or dominoAngle=-45{
                 image_angle=315
             }
         }else if image_angle=180 or image_angle=-180{
-            if dominoAngle=315 or dominoAngle=45 or dominoAngle=0{
+            if dominoAngle=315 or dominoAngle=45 or dominoAngle=0 or dominoAngle=-315 or domino=-45{
                 image_angle=0
             }
         }else if image_angle=225 or image_angle=-135{
-            if dominoAngle=90 or dominoAngle=45 or dominoAngle=0{
+            if dominoAngle=90 or dominoAngle=45 or dominoAngle=0 or dominoAngle=-270 or dominoAngle=-315{
                 image_angle=45
             }
         }else if image_angle=270 or image_angle=-90{
-            if dominoAngle=135 or dominoAngle=90 or dominoAngle=45{
+            if dominoAngle=135 or dominoAngle=90 or dominoAngle=45 or dominoAngle=-225 or dominoAngle=-315 or dominoAngle=-270{
                 image_angle=90
             }
         }else if image_angle=315 or image_angle=-45{
-            if dominoAngle=180 or dominoAngle=90 or dominoAngle=135{
+            if dominoAngle=180 or dominoAngle=90 or dominoAngle=135 or dominoAngle=-180 or dominoAngle=-270 or dominoAngle=-225{
                 image_angle=135
             }
         }
+        
+        
         
         state=stateFalling
     }

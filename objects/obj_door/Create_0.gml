@@ -1,0 +1,1 @@
+goal=x-sprite_width*image_xscale
