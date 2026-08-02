@@ -1,5 +1,5 @@
 canMove=false
-collisionList=[obj_domino, obj_finger, obj_pointB]
+collisionList=[obj_domino, obj_finger, obj_pointB, obj_caminho_reto];
 sprites=choose(spr_dominoFall_1, spr_dominoFall_2, spr_dominoFall_3, spr_dominoFall_4)
 angle=0
 
@@ -8,7 +8,7 @@ angle=0
 stateParado=function(){
     sprite_index=spr_domino;
     if position_meeting(mouse_x, mouse_y, id){
-        if  mouse_check_button_pressed(mb_left){
+        if  (mouse_check_button_pressed(mb_left)){
             canMove=true
             global.dm_atual = id;
             state = stateMoving;
