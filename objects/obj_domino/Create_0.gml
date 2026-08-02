@@ -25,6 +25,10 @@ stateParado=function(){
         image_angle=315
     }
     
+    if canMove{
+        state = stateMoving;
+    }
+    
     var domino=instance_place(x,y,obj_domino)
     if domino and (domino.state=domino.stateFalled or domino.state=domino.stateFalling){
         var dominoAngle=domino.image_angle

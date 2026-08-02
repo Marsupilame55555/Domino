@@ -37,7 +37,6 @@
     {"id":{"name":"obj_finger","path":"objects/obj_finger/obj_finger.yy",},},
     {"id":{"name":"obj_pointB","path":"objects/obj_pointB/obj_pointB.yy",},},
     {"id":{"name":"obj_tween","path":"objects/obj_tween/obj_tween.yy",},},
-    {"id":{"name":"Fase1","path":"rooms/Fase1/Fase1.yy",},},
     {"id":{"name":"Tutorial","path":"rooms/Tutorial/Tutorial.yy",},},
     {"id":{"name":"Functions","path":"scripts/Functions/Functions.yy",},},
     {"id":{"name":"Globals","path":"scripts/Globals/Globals.yy",},},
@@ -62,7 +61,6 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"Tutorial","path":"rooms/Tutorial/Tutorial.yy",},},
-    {"roomId":{"name":"Fase1","path":"rooms/Fase1/Fase1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

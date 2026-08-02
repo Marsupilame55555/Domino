@@ -6,16 +6,18 @@ if (instance_exists(obj_domino))
     var domino_right = collision_rectangle(x + sprite_width/2, y - sprite_height/2, x, y + sprite_height/2, obj_domino, 0, 1 );
     
     if domino_left and domino.state=domino.stateFalled{
-        if (image_index != MODE.on)
-        {
-            image_index = MODE.on;
-            tween(friend1, "x", friend1.xstart, tween_animation.elastic)
-        }
-    }
-    if domino_right and domino.state=domino.stateFalled{
         if (image_index != MODE.off)
         {
             image_index = MODE.off;
+            tween(friend1, "x", friend1.xstart, tween_animation.elastic)
+            
+        }
+    }
+    if domino_right and domino.state=domino.stateFalled{
+        if (image_index != MODE.on)
+        {
+            image_index = MODE.on;
+            
             tween(friend1, "x", friend1.goal, tween_animation.elastic)
         }
     }
