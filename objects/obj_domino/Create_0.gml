@@ -1,7 +1,8 @@
 canMove=false
-collisionList=[obj_domino, obj_finger, obj_pointB]
+collisionList=[obj_domino, obj_finger, obj_buttonEnd, obj_block, obj_door]
 sprites=choose(spr_dominoFall_1, spr_dominoFall_2, spr_dominoFall_3, spr_dominoFall_4)
 angle=0
+angleGoal=0
 
 
 
@@ -15,68 +16,59 @@ stateParado=function(){
         }
     }
     
-    if image_angle=360{
-        image_angle=0
-    }else if image_angle=405{
-        image_angle=45
-    } else if image_angle=-360{
-        image_angle=0
-    }else if image_angle=-405{
-        image_angle=315
-    }
-    
     if canMove{
         state = stateMoving;
     }
     
     var domino=instance_place(x,y,obj_domino)
-    if domino and (domino.state=domino.stateFalled or domino.state=domino.stateFalling){
+    if domino and (domino.state=domino.stateFalled || domino.state=domino.stateFalling){
         var dominoAngle=domino.image_angle
         
         angle=irandom_range(-5, 5)
         audio_sound_pitch_range(snd_domino, 0.15)
         
         if image_angle=0{
-            if dominoAngle=180 or dominoAngle=135 or dominoAngle=225 or dominoAngle=-180 or dominoAngle=-225 or dominoAngle=-135{
+            if dominoAngle=180 || dominoAngle=135 || dominoAngle=225 || dominoAngle=-180 || dominoAngle=-225 || dominoAngle=-135{
                 image_angle=180
             }
-        }else if image_angle=45 or image_angle=-315{
-            if dominoAngle=180 or dominoAngle=270 or dominoAngle=225 or dominoAngle=-180 or dominoAngle=-90 or dominoAngle=-135{
+        }else if image_angle=45 || image_angle=-315{
+            if dominoAngle=180 || dominoAngle=270 || dominoAngle=225 || dominoAngle=-180 || dominoAngle=-90 || dominoAngle=-135{
                 image_angle=225
             }
-        }else if image_angle=90  or image_angle=-270{
-            if dominoAngle=270 or dominoAngle=315 or dominoAngle=225 or dominoAngle=-90 or dominoAngle=-45 or dominoAngle=-135{
+        }else if image_angle=90  || image_angle=-270{
+            if dominoAngle=270 || dominoAngle=315 || dominoAngle=225 || dominoAngle=-90 || dominoAngle=-45 || dominoAngle=-135{
                 image_angle=270
             }
-        }else if image_angle=135 or image_angle=-225{
-            if dominoAngle=270 or dominoAngle=315 or dominoAngle=0 or dominoAngle=-90 or dominoAngle=-45{
+        }else if image_angle=135 || image_angle=-225{
+            if dominoAngle=270 || dominoAngle=315 || dominoAngle=0 || dominoAngle=-90 || dominoAngle=-45{
                 image_angle=315
             }
-        }else if image_angle=180 or image_angle=-180{
-            if dominoAngle=315 or dominoAngle=45 or dominoAngle=0 or dominoAngle=-315 or domino=-45{
+        }else if image_angle=180 || image_angle=-180{
+            if dominoAngle=315 || dominoAngle=45 || dominoAngle=0 || dominoAngle=-315 || domino=-45{
                 image_angle=0
             }
-        }else if image_angle=225 or image_angle=-135{
-            if dominoAngle=90 or dominoAngle=45 or dominoAngle=0 or dominoAngle=-270 or dominoAngle=-315{
+        }else if image_angle=225 || image_angle=-135{
+            if dominoAngle=90 || dominoAngle=45 || dominoAngle=0 || dominoAngle=-270 || dominoAngle=-315{
                 image_angle=45
             }
-        }else if image_angle=270 or image_angle=-90{
-            if dominoAngle=135 or dominoAngle=90 or dominoAngle=45 or dominoAngle=-225 or dominoAngle=-315 or dominoAngle=-270{
+        }else if image_angle=270 || image_angle=-90{
+            if dominoAngle=135 || dominoAngle=90 || dominoAngle=45 || dominoAngle=-225 || dominoAngle=-315 || dominoAngle=-270{
                 image_angle=90
             }
-        }else if image_angle=315 or image_angle=-45{
-            if dominoAngle=180 or dominoAngle=90 or dominoAngle=135 or dominoAngle=-180 or dominoAngle=-270 or dominoAngle=-225{
+        }else if image_angle=315 || image_angle=-45{
+            if dominoAngle=180 || dominoAngle=90 || dominoAngle=135 || dominoAngle=-180 || dominoAngle=-270 || dominoAngle=-225{
                 image_angle=135
             }
         }
         
-        
-        
         state=stateFalling
     }
     
+    if image_angle>=360 || image_angle<=-360{
+        image_angle=0
+    }
     
-    
+    image_angle += sin(degtorad(angleGoal - image_angle)) * 15;
 }
 
 stateMoving=function(){
@@ -96,23 +88,17 @@ stateMoving=function(){
     
     if (mouse_wheel_down())
     {
-        image_angle-=45
-    }
-    if (mouse_wheel_up())
+        angleGoal-=45
+    } else if (mouse_wheel_up())
     {
-        image_angle+=45
+        angleGoal+=45
     }
     
-    
-    if image_angle=360{
+    if image_angle>=360 || image_angle<=-360{
         image_angle=0
-    }else if image_angle=405{
-        image_angle=45
-    } else if image_angle=-360{
-        image_angle=0
-    }else if image_angle=-405{
-        image_angle=315
     }
+    
+    image_angle += sin(degtorad(angleGoal - image_angle)) * 15;
 }
 
 stateFalling=function(){
