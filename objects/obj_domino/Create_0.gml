@@ -9,6 +9,7 @@ stateParado=function(){
     if position_meeting(mouse_x, mouse_y, id){
         if  mouse_check_button_pressed(mb_left){
             canMove=true
+            global.dm_atual = id;
             state = stateMoving;
         }
     }
@@ -71,7 +72,7 @@ stateParado=function(){
 }
 
 stateMoving=function(){
-
+    
     var nx = ((mouse_x div CELL_SIZE) * CELL_SIZE) ;
     var ny = ((mouse_y div CELL_SIZE) * CELL_SIZE);
     if (!place_meeting(nx, ny, collisionList))
@@ -81,6 +82,7 @@ stateMoving=function(){
     }
     if  mouse_check_button_pressed(mb_left){
         canMove=false;
+        global.dm_atual = noone;
         state = stateParado;
     }
     
@@ -107,6 +109,10 @@ stateMoving=function(){
 
 stateFalling=function(){
     sprite_index=sprites
+    if (global.dm_atual != noone)
+    {
+        global.dm_atual = noone;
+    }
     if image_index>image_number-1{
         state=stateFalled
     }
