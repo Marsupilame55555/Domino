@@ -1,9 +1,9 @@
 enum MODE {
-    off,
-    on
+    on,
+    off
 }
 
 domino = 0;
 
 
-image_index = MODE.on;
+image_index = MODE.off;

@@ -1,6 +1,7 @@
 canMove=false
 collisionList=[obj_domino, obj_finger, obj_pointB]
 sprites=choose(spr_dominoFall_1, spr_dominoFall_2, spr_dominoFall_3, spr_dominoFall_4)
+angle=0
 
 
 
@@ -26,7 +27,7 @@ stateParado=function(){
     var domino=instance_place(x,y,obj_domino)
     if domino and (domino.state=domino.stateFalled or domino.state=domino.stateFalling){
         var dominoAngle=domino.image_angle
-        image_angle=irandom_range(image_angle-5, image_angle+5)
+        angle=irandom_range(-5, 5)
         audio_sound_pitch_range(snd_domino, 0.15)
         
         if image_angle=0{
