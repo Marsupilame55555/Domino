@@ -1,13 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_domino",
+  "%Name":"obj_caminho_reto",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_domino",
+  "name":"obj_caminho_reto",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -32,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_domino",
-    "path":"sprites/spr_domino/spr_domino.yy",
+    "name":"spr_caminho_reto",
+    "path":"sprites/spr_caminho_reto/spr_caminho_reto.yy",
   },
   "spriteMaskId":null,
   "visible":true,
