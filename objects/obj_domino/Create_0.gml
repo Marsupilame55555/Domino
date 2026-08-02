@@ -117,6 +117,7 @@ stateMoving=function(){
 
 stateFalling=function(){
     sprite_index=sprites
+    screenShake(20)
     if (global.dm_atual != noone)
     {
         global.dm_atual = noone;
@@ -129,7 +130,6 @@ stateFalling=function(){
 
 stateFalled=function(){
     image_speed=0
-    
 }
 
 state=stateParado;
