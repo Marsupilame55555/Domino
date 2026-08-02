@@ -6,4 +6,4 @@ view_set_yport(0, random_range(-treme, treme));
 
 
 
-treme = lerp(treme, 0, .05);
+treme = lerp(treme, 0, .1);

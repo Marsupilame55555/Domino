@@ -117,7 +117,7 @@ stateMoving=function(){
 
 stateFalling=function(){
     sprite_index=sprites
-    screenShake(20)
+    screenShake(15)
     if (global.dm_atual != noone)
     {
         global.dm_atual = noone;
