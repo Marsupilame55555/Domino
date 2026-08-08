@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_door",
   "bboxMode":0,
-  "bbox_bottom":7,
+  "bbox_bottom":3,
   "bbox_left":0,
   "bbox_right":31,
   "bbox_top":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":8,
+  "height":4,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"3980d146-61b1-4174-8ba6-be4b1ea6dc0f","blendMode":0,"displayName":"default","isLocked":false,"name":"3980d146-61b1-4174-8ba6-be4b1ea6dc0f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},

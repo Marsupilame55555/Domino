@@ -29,8 +29,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Dominos",
+    "path":"folders/Sprites/Dominos.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

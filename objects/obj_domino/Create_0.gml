@@ -1,12 +1,16 @@
 canMove=false
-collisionList=[obj_domino, obj_finger, obj_buttonEnd, obj_block, obj_door]
-sprites=choose(spr_dominoFall_1, spr_dominoFall_2, spr_dominoFall_3, spr_dominoFall_4)
+collisionList=[obj_domino, obj_finger, obj_block, obj_door, obj_buttonPar]
+sprites=choose(spr_dominoFall_1, spr_dominoFall_2, spr_dominoFall_3, spr_dominoFall_4, spr_dominoFall_5, spr_dominoFall_6, spr_dominoFall_7)
 angle=0
 angleGoal=0
+
+stateText=""
 
 
 
 stateParado=function(){
+    stateText="Parado"
+    
     sprite_index=spr_domino;
     if position_meeting(mouse_x, mouse_y, id){
         if  mouse_check_button_pressed(mb_left){
@@ -23,56 +27,32 @@ stateParado=function(){
     var domino=instance_place(x,y,obj_domino)
     if domino and (domino.state=domino.stateFalled || domino.state=domino.stateFalling){
         var dominoAngle=domino.image_angle
+        depth=domino.depth+1
+        screenShake(25)
+        obj_finger.timer=80;
         
-        angle=irandom_range(-5, 5)
+        angle=irandom_range(-4, 4)
         audio_sound_pitch_range(snd_domino, 0.15)
         
-        if image_angle=0{
-            if dominoAngle=180 || dominoAngle=135 || dominoAngle=225 || dominoAngle=-180 || dominoAngle=-225 || dominoAngle=-135{
-                image_angle=180
-            }
-        }else if image_angle=45 || image_angle=-315{
-            if dominoAngle=180 || dominoAngle=270 || dominoAngle=225 || dominoAngle=-180 || dominoAngle=-90 || dominoAngle=-135{
-                image_angle=225
-            }
-        }else if image_angle=90  || image_angle=-270{
-            if dominoAngle=270 || dominoAngle=315 || dominoAngle=225 || dominoAngle=-90 || dominoAngle=-45 || dominoAngle=-135{
-                image_angle=270
-            }
-        }else if image_angle=135 || image_angle=-225{
-            if dominoAngle=270 || dominoAngle=315 || dominoAngle=0 || dominoAngle=-90 || dominoAngle=-45{
-                image_angle=315
-            }
-        }else if image_angle=180 || image_angle=-180{
-            if dominoAngle=315 || dominoAngle=45 || dominoAngle=0 || dominoAngle=-315 || domino=-45{
-                image_angle=0
-            }
-        }else if image_angle=225 || image_angle=-135{
-            if dominoAngle=90 || dominoAngle=45 || dominoAngle=0 || dominoAngle=-270 || dominoAngle=-315{
-                image_angle=45
-            }
-        }else if image_angle=270 || image_angle=-90{
-            if dominoAngle=135 || dominoAngle=90 || dominoAngle=45 || dominoAngle=-225 || dominoAngle=-315 || dominoAngle=-270{
-                image_angle=90
-            }
-        }else if image_angle=315 || image_angle=-45{
-            if dominoAngle=180 || dominoAngle=90 || dominoAngle=135 || dominoAngle=-180 || dominoAngle=-270 || dominoAngle=-225{
-                image_angle=135
-            }
+        if dominoAngle==image_angle-180 || dominoAngle == image_angle-135 || dominoAngle==image_angle-225{
+            image_angle-=180
+        }
+        if dominoAngle==image_angle+180 || dominoAngle == image_angle+135 || dominoAngle==image_angle+225{
+            image_angle+=180
         }
         
         state=stateFalling
     }
     
-    if image_angle>=360 || image_angle<=-360{
+    if image_angle>=360 || image_angle <=-360{
         image_angle=0
     }
     
-    image_angle += sin(degtorad(angleGoal - image_angle)) * 15;
+    image_angle += sin(degtorad(angleGoal - image_angle)) * 30;
 }
 
 stateMoving=function(){
-    
+    stateText="Moving"
     var nx = ((mouse_x div CELL_SIZE) * CELL_SIZE) ;
     var ny = ((mouse_y div CELL_SIZE) * CELL_SIZE);
     if (!place_meeting(nx, ny, collisionList))
@@ -86,6 +66,12 @@ stateMoving=function(){
         state = stateParado;
     }
     
+    if (global.go)
+    {
+        global.dm_atual = noone;
+        instance_destroy();
+    }
+    
     if (mouse_wheel_down())
     {
         angleGoal-=45
@@ -94,16 +80,20 @@ stateMoving=function(){
         angleGoal+=45
     }
     
-    if image_angle>=360 || image_angle<=-360{
+    if image_angle>=360 || image_angle <=-360{
         image_angle=0
     }
     
-    image_angle += sin(degtorad(angleGoal - image_angle)) * 15;
+    image_angle += sin(degtorad(angleGoal - image_angle)) * 30;
 }
 
 stateFalling=function(){
+    stateText="Caindo"
+    
+    image_speed=1
+    
     sprite_index=sprites
-    screenShake(15)
+    
     if (global.dm_atual != noone)
     {
         global.dm_atual = noone;
@@ -114,7 +104,17 @@ stateFalling=function(){
     
 }
 
+stateGoingBack=function(){
+    image_speed=-1
+    angle=0
+    
+    if image_index<0.5{
+        state=stateParado
+    }
+}
+
 stateFalled=function(){
+    stateText="Caido"
     image_speed=0
 }
 

@@ -1,4 +1,9 @@
-domino = 0;
+event_inherited()
 
+actionOff=function(){
+    
+}
 
-image_index = MODE.off;
+actionOn=function(){
+    layer_sequence_create("Transition", room_width/2, room_height/2, seq_transitionIn)
+}
