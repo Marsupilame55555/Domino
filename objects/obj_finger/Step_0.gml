@@ -1,3 +1,5 @@
+if (global.hitstop) exit
+
 if keyboard_check_pressed(vk_space){
     global.go=true;
     timer=60
@@ -8,7 +10,7 @@ if keyboard_check_pressed(vk_space){
 }
 
 if global.go=true{
-    dest_x = _x+14;
+    dest_x = xstart+14;
 }else 
 {
     dest_x = xstart;
@@ -31,12 +33,34 @@ if ((domino and domino.state=domino.stateParado) && global.go){
 
 if (timer > 0)
 {
-    if instance_exists(obj_bola){
-        if obj_bola.hsp=0 and obj_bola.vsp=0{
+    if instance_exists(obj_bola) && !instance_exists(obj_bola_1){
+        if (obj_bola.state==obj_bola.stateParado or obj_bola.state==obj_bola.stateBateu){
             timer--
         }
-    }else{
-        timer --;
+        
+    }
+    
+    var _total = instance_number(obj_bola_1);
+    var countDown=true
+    with obj_bola_1{
+        if state==stateGo{
+            countDown=false
+        }
+    }
+    
+    if instance_exists(obj_bola_1) && !instance_exists(obj_bola) && countDown=true{
+        if (obj_bola_1.state==obj_bola_1.stateParado or obj_bola_1.state==obj_bola_1.stateBateu){
+            timer--
+        }
+    }
+    if !instance_exists(obj_bola_1) && !instance_exists(obj_bola){
+        timer --
+    }
+    
+    if instance_exists(obj_bola) && instance_exists(obj_bola_1){
+        if (obj_bola.state==obj_bola.stateParado or obj_bola.state==obj_bola.stateBateu) and (obj_bola_1.state==obj_bola_1.stateParado or obj_bola_1.state==obj_bola_1.stateBateu){
+            timer--
+        }
     }
 }else{
     if (global.go)

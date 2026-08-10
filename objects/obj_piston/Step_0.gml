@@ -1,3 +1,7 @@
+if (global.hitstop){
+    image_speed=0
+    exit
+}
 
 if push{
     var domino=instance_place(x+CELL_SIZE*image_xscale, y, obj_domino)

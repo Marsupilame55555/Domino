@@ -6,13 +6,21 @@ way=0
 angle=""
 
 stateParado=function(){
+    stateText="Parado"
+    hsp=0
+    vsp=0
     x=global.firstPath.x
     y=global.firstPath.y
     
     var _domino=instance_place(x, y, obj_domino)
     if (_domino && (_domino.state == _domino.stateFalled || _domino.state == _domino.stateFalling)){
-        state=stateGo
         var path=instance_nearest(x,y,obj_caminho)
+        
+        if (_domino.image_angle == 0 or image_angle=180) and path.way == "vertical"{exit}
+        if (_domino.image_angle == 90 or image_angle=270) and path.way == "horizontal"{exit}
+        
+        state=stateGo
+        
         if path.way == "horizontal"{
             
             if _domino.image_angle >= 135 && _domino.image_angle <= 225{
@@ -33,9 +41,19 @@ stateParado=function(){
             
         }
     }
+    
+    var ball=instance_place(x,y,obj_bola_1)
+    if ball{
+        ball.hsp=0
+        ball.vsp=0
+        state=stateGo
+        screenShake(15)
+        
+    }
 }
 
 stateGo=function(){
+    stateText="Rola"
     var path=instance_nearest(x,y,obj_caminho)
     var _dist=point_distance(x,y,path.x, path.y)
     if _dist<2{
@@ -98,6 +116,9 @@ stateGo=function(){
                     angle = "esquerda"
                 }
             break
+            case "":
+                obj_finger.timer--
+            break
         }
     }
     
@@ -105,12 +126,29 @@ stateGo=function(){
     if _domino and (_domino.state==_domino.stateParado){
         _domino.state=_domino.stateFalling
         state=stateBateu
+        if hsp>0{
+            _domino.image_angle=0
+        }else if hsp<0{
+            _domino.image_angle=180
+        }else if vsp>0{
+            _domino.image_angle=270
+        }else if vsp<0{
+            _domino.image_angle=90
+        }
+        audio_play_sound(snd_domino, 1, false)
+        screenShake(15)
     }
+    
+    if place_meeting(x,y,obj_block) or place_meeting(x,y,obj_door) or place_meeting(x,y,obj_canhao){
+            state=stateBateu
+        }
 }
 
 stateBateu=function(){
+    stateText="Bati"
     hsp=0
     vsp=0
+    
 }
 
 state=stateParado

@@ -18,7 +18,7 @@ yscale = 1;
 
 stateParado=function(){
     if position_meeting(mouse_x, mouse_y, id){
-        if  (mouse_check_button_pressed(mb_left) && !global.lixo){
+        if  (mouse_check_button_pressed(mb_left) && !global.lixo && global.go==false){
             canMove=true
             global.dm_atual = id;
             state = stateMoving;
@@ -60,6 +60,8 @@ stateParado=function(){
             yscale = .8;
             
             criate = true;
+            
+            obj_finger.timer=100
         }
     }
     
@@ -80,6 +82,13 @@ stateMoving=function(){
         canMove=false;
         global.dm_atual = noone;
         state = stateParado;
+    }
+    
+    if (global.go)
+    {
+        global.dm_atual = noone;
+        obj_controles.quantidadeObjetos[2]++
+        instance_destroy();
     }
     
     if (mouse_wheel_down())

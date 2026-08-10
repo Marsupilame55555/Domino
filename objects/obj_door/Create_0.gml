@@ -1,1 +1,5 @@
-goal=x-sprite_width*image_xscale
+if horizontal{
+    goal=x+(sprite_width*side)
+}else{
+    goal=y+(sprite_height*side)
+}

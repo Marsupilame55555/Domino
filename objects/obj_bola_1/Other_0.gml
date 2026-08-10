@@ -1,0 +1,1 @@
+obj_finger.timer=0

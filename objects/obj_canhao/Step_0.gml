@@ -1,3 +1,5 @@
+if (global.hitstop) exit;
+
 state();
 
 

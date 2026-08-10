@@ -1,7 +1,7 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_caminho",
-  "bboxMode":2,
+  "bboxMode":0,
   "bbox_bottom":23,
   "bbox_left":0,
   "bbox_right":23,

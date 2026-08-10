@@ -1,4 +1,4 @@
-_x=x
+
 dest_x = 0;
 
 timer_set = 60;
@@ -21,7 +21,10 @@ goBack=function(){
     }
     
     with obj_bola{
-        hsp=global.firstPath.x
-        vsp=global.firstPath.y
+        state=stateParado
+    }
+    
+    with obj_bola_1{
+        state=stateParado
     }
 }

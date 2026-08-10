@@ -1,19 +1,16 @@
 canMove=false
-collisionList=[obj_domino, obj_finger, obj_block, obj_door, obj_buttonPar]
+collisionList=[obj_domino, obj_finger, obj_block, obj_door, obj_buttonPar, obj_buttonPressPar]
 sprites=choose(spr_dominoFall_1, spr_dominoFall_2, spr_dominoFall_3, spr_dominoFall_4, spr_dominoFall_5, spr_dominoFall_6, spr_dominoFall_7)
 angle=0
-angleGoal=0
 
 stateText=""
-
-
 
 stateParado=function(){
     stateText="Parado"
     
     sprite_index=spr_domino;
     if position_meeting(mouse_x, mouse_y, id){
-        if  mouse_check_button_pressed(mb_left){
+        if  mouse_check_button_pressed(mb_left)  && !global.lixo && global.go==false{
             canMove=true
             global.dm_atual = id;
             state = stateMoving;
@@ -28,7 +25,7 @@ stateParado=function(){
     if domino and (domino.state=domino.stateFalled || domino.state=domino.stateFalling){
         var dominoAngle=domino.image_angle
         depth=domino.depth+1
-        screenShake(25)
+        screenShake(15)
         obj_finger.timer=80;
         
         angle=irandom_range(-4, 4)
@@ -69,6 +66,7 @@ stateMoving=function(){
     if (global.go)
     {
         global.dm_atual = noone;
+        obj_controles.quantidadeObjetos[0]++
         instance_destroy();
     }
     
@@ -89,11 +87,11 @@ stateMoving=function(){
 
 stateFalling=function(){
     stateText="Caindo"
-    
+
     image_speed=1
-    
+
     sprite_index=sprites
-    
+
     if (global.dm_atual != noone)
     {
         global.dm_atual = noone;
@@ -101,14 +99,21 @@ stateFalling=function(){
     if image_index>image_number-1{
         state=stateFalled
     }
-    
+
+
+    var _parede = [obj_block, obj_door];
+
+    if (instance_place(x, y, _parede))
+    {
+        image_speed = 0;
+    }
 }
 
 stateGoingBack=function(){
     image_speed=-1
     angle=0
     
-    if image_index<0.5{
+    if image_index<1{
         state=stateParado
     }
 }
@@ -116,6 +121,7 @@ stateGoingBack=function(){
 stateFalled=function(){
     stateText="Caido"
     image_speed=0
+    image_index=image_number-1
 }
 
 state=stateParado;

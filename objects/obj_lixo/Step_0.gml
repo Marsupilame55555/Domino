@@ -1,1 +1,1 @@
-global.lixeiro = lixos;
+global.lixeiro = lixos; 
